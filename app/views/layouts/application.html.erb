@@ -10,11 +10,23 @@
   </head>
 
   <body>
-    <nav class='navbar navbar-expand-md md-3'>
+    <nav class='navbar navbar-expand-xs md-3'>
       <div class='navbar-brand'>
         <%= image_tag 'insta.logo.jpg', width: '30%', height: '30%' %>
       </div>
+
+      <ul class='navbar-nav'>
+        <% if current_user %>
+          <li class='nav-item'><%= link_to '作成', new_post_path, class:  'nav-link' %></li>
+          <li class='nav-item'><%= link_to '投稿一覧', posts_path, class: 'nav-link' %></li>
+          <li class='nav-item'><%= link_to 'ログアウト', session_path(current_user.id), method: :delete, class: 'nav-link' %></li>
+        <% else %>
+          <li class='nav-item'><%= link_to 'アカウント登録', new_user_path, class: 'nav-link' %></li>
+          <li class='nav-item'><%= link_to 'ログイン', new_session_path, class: 'nav-link' %></li>
+        <% end %>
+      </ul>
     </nav>
+
     <div class='container'>
       <% if flash.notice.present? %>
         <div class='alert alert-success'>
