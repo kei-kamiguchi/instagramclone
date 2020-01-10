@@ -1,0 +1,7 @@
+<h1>新規作成</h1>
+
+<%= form_with model: @post, local: true do |p| %>
+  <%= p.label :content %>
+  <%= p.text_area :content %>
+  <%= p.submit nil, class: 'btn btn-primary' %>
+<% end %>
