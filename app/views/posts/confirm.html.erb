@@ -1,2 +1,32 @@
-<h1>Posts#confirm</h1>
-<p>Find me in app/views/posts/confirm.html.erb</p>
+<h1>確認</h1>
+
+<% if @post.errors.present? %>
+  <ul id='error_explanation'>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+  </ul>
+<% end %>
+
+<%= form_with model: @post, url: posts_path, local: true do |f| %>
+  <table class='table table-responsive-md'>
+    <tr>
+      <th>f.label :content</th>
+    </tr>
+    <tr>
+      <td><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+      <%= f.hidden_field :content %>
+    </tr>
+    <tr>
+      <th>f.label :image</th>
+    </tr>
+    <td><%= image_tag(@post.image.url) if @post.image && @post.image.url %></td>
+    <%= f.hidden_field :image_cache %>
+  </table>
+  <%= f.submit nil, class: 'btn btn-primary mr-3' %>
+<% end %>
+
+<%= form_with model: @post, url: new_post_path, local: true, method: :get do |f| %>
+  <%= f.hidden_field :content %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.submit '戻る', name: 'back', class: 'btn btn-primary' %>
+<% end %>

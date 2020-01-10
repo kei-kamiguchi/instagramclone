@@ -1,2 +1,20 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>投稿一覧</h1>
+
+<table class='table table-responsive-xs'>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.content %></td>
+      </tr>
+      <tr>
+        <td><%= image_tag(post.image.url) if post.image && post.image.url %></td>
+      </tr>
+      <tr>
+        <td class='text-right'>
+          <%= link_to '編集', edit_post_path(post), class: 'btn btn-info mr-3' %>
+          <%= link_to '削除', post, method: :delete, data: { confirm: "こちらの投稿を削除します。よろしいですか？" }, class: 'btn btn-info' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
