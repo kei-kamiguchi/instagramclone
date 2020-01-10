@@ -5,7 +5,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post=Post.new
+    if params[:back]
+      @post = post.new(post_params)
+    else
+      @post=Post.new
+    end
   end
 
   def create
@@ -37,6 +41,7 @@ class PostsController < ApplicationController
   end
 
   def confirm
+    @post=Post.find(params[:id])
   end
 
   def destroy

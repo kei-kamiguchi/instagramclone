@@ -40,3 +40,6 @@ gem 'bootstrap'
 # imageuploader
 gem 'carrierwave'
 gem 'mini_magick'
+
+# password
+gem 'bcrypt'
