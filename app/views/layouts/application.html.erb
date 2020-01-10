@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class='navbar navbar-expand-md md-3'>
+      <div class='navbar-brand'>
+        <%= image_tag 'insta.logo.jpg', width: '30%', height: '30%' %>
+      </div>
+    </nav>
+    <div class='container'>
+      <% if flash.notice.present? %>
+        <div class='alert alert-success'>
+          <%= flash.notice %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <footer class='footer'>
+      <div class='container text-center mt-3'>
+        <p>Place sticky footer content here.</p>
+      </div>
+    </footer>
   </body>
 </html>
