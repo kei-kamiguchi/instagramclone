@@ -1,4 +1,10 @@
 <h1>アカウント登録</h1>
+<% if @user.errors.present? %>
+  <ul id='error_explanation'>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+  </ul>
+<% end %>
 
 <%= form_with model: @user, local: true do |u| %>
   <div class='form-group'>
