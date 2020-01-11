@@ -1,6 +1,6 @@
 class PostMailer < ApplicationMailer
-  def post_mail()
+  def post_mail(current_user.email)
 
-    mail to: 'kei.kamiguchi517@gmail.com', subject: "投稿しました"
+    mail to: current_user.email, subject: "投稿しました"
   end
 end
