@@ -1,26 +1,26 @@
-<h1>ユーザー一覧</h1>
-
 <% if @users&.count==0 %>
   <p>ユーザーデータはまだありません。</p>
 <% else %>
   <table class='table table-hover'>
-    <thead class='thead -default'>
+    <thead class='thead-light'>
       <tr>
         <th><%= User.human_attribute_name(:name) %></th>
         <th><%= User.human_attribute_name(:email) %></th>
-        <td></td>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @users&.each do |user| %>
         <tr>
-          <td><%= link_to user.name, user %></td>
+          <td><%= user.name %></td>
           <td><%= user.email %></td>
-          <% if user.name == current_user.name %>
+          <% if user == current_user %>
             <td class='text-right mb-5'>
               <%= link_to '編集', edit_user_path(user), class: "btn btn-primary mr-3" %>
               <%= link_to '削除', user, method: :delete, data: { confirm: "こちらのユーザーを削除します。よろしいですか？" }, class: 'btn btn-danger' %>
             </td>
+          <% else %>
+            <td></td>
           <% end %>
         </tr>
       <% end %>

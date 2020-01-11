@@ -1,4 +1,3 @@
-<h1>投稿一覧</h1>
 <% if @posts&.count==0 %>
   <p>投稿はまだありません。</p>
 <% else %>
@@ -9,13 +8,13 @@
           <td><%= User.find_by(id: post.user_id).name %></td>
         </tr>
         <tr>
-          <td><%= post.content %></td>
+          <td><%= simple_format(h(post.content), {}, sanitize: false, wrapper_tag: "div") %></td>
         </tr>
         <tr>
           <td><%= image_tag(post.image.url) if post.image && post.image.url %></td>
         </tr>
         <tr>
-          <% if User.find_by(id: post.user_id).name == current_user.name %>
+          <% if post.user_id==current_user.id %>
             <td class='text-right'>
               <%= link_to '編集', edit_post_path(post), class: 'btn btn-info mr-3' %>
               <%= link_to '削除', post, method: :delete, data: { confirm: "こちらの投稿を削除します。よろしいですか？" }, class: 'btn btn-info' %>
