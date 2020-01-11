@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post=current_user.posts.build(post_params)
 
     if @post.save
-      item=User.find_by(id: @post.user_id)
+      item=User.find_by(id: @post.user_id).email
       PostMailer.post_mail(item).deliver
       redirect_to posts_path, notice: "投稿しました"
     else
