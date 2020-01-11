@@ -10,15 +10,17 @@
   </head>
 
   <body>
-    <nav class='navbar navbar-expand-xs md-3'>
+    <nav class='navbar md-3 ml-5'>
       <div class='navbar-brand'>
-        <%= image_tag 'insta.logo.jpg', width: '30%', height: '30%' %>
+        <%= image_tag 'insta.logo.jpg', width: '300px' %>
       </div>
 
-      <ul class='navbar-nav'>
-        <% if current_user %>
+      <ul class='navbar-nav ml-auto'>
+        <% if logged_in? %>
+          <li class='nav-item'><%= link_to 'マイプロフィール', @current_user, class: 'nav-link' %></li>
           <li class='nav-item'><%= link_to '作成', new_post_path, class:  'nav-link' %></li>
           <li class='nav-item'><%= link_to '投稿一覧', posts_path, class: 'nav-link' %></li>
+          <li class='nav-item'><%= link_to 'ユーザー一覧', users_path, class: 'nav-link' %></li>
           <li class='nav-item'><%= link_to 'ログアウト', session_path(current_user.id), method: :delete, class: 'nav-link' %></li>
         <% else %>
           <li class='nav-item'><%= link_to 'アカウント登録', new_user_path, class: 'nav-link' %></li>
@@ -26,11 +28,10 @@
         <% end %>
       </ul>
     </nav>
-
     <div class='container'>
-      <% if flash.notice.present? %>
-        <div class='alert alert-success'>
-          <%= flash.notice %>
+      <% if flash[:notice] %>
+        <div class='alert alert-warning' role='alert'>
+          <%= flash[:notice] %>
         </div>
       <% end %>
       <%= yield %>

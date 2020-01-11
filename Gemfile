@@ -36,6 +36,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # view/front
 gem 'bootstrap'
+gem 'jquery-rails'
 
 # imageuploader
 gem 'carrierwave'
@@ -43,3 +44,7 @@ gem 'mini_magick'
 
 # password
 gem 'bcrypt'
+
+gem 'rmagick'
+
+gem 'pry-byebug'

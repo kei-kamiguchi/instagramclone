@@ -5,15 +5,17 @@ class PostsController < ApplicationController
   end
 
   def new
-    if params[:back]
-      @post = post.new(post_params)
-    else
-      @post=Post.new
-    end
+    @post=Post.new
   end
 
   def create
-    @post=Post.new(post_params)
+    if params[:back]
+      @post = Post.new(post_params)
+      render 'new'
+      return
+    end
+
+    @post=current_user.posts.build(post_params)
 
     if @post.save
       redirect_to posts_path, notice: "投稿しました"
@@ -41,7 +43,7 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    @post=Post.find(params[:id])
+    @post=current_user.posts.build(post_params)
   end
 
   def destroy
