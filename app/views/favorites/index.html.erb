@@ -1,0 +1,18 @@
+<h1>お気に入り</h1>
+
+<% if @favorites&.count==0 %>
+  <p>お気に入りはまだありません。</p>
+<% else %>
+  <table class='table table-responsive-xs'>
+    <tbody>
+      <% @favorites.each do |favorite| %>
+        <tr>
+          <td><%= favorite.post.user.name %></td>
+        </tr>
+        <tr>
+          <td><%= image_tag(favorite.post.image.url) if favorite.post.image && favorite.post.image.url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

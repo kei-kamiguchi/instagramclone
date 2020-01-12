@@ -38,13 +38,17 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap'
 gem 'jquery-rails'
 
-# imageuploader
+# image
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'rmagick'
 
 # password
 gem 'bcrypt'
 
-gem 'rmagick'
-
+# test
 gem 'pry-byebug'
+gem 'faker'
+
+# config
+gem 'dotenv-rails'

@@ -9,14 +9,14 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
-      task:
+      post:
     attributes:
       user:
         name: 名前
         email: メールアドレス
         password: パスワード
         password_confirm: 確認
-      task:
+      post:
         content: 本文
         image: 写真
   date:
