@@ -8,9 +8,9 @@
 
 <%= form_with model: @user, local: true do |u| %>
   <% if @user.image? %>
-    <%= image_tag @user.image.url, width: '300px', onClick:"$('#upfile').click()",id: :img_prev %>
+    <%= image_tag @user.image.url, width: '300px', id: :img_prev %>
   <% else %>
-    <%= image_tag "no_image.png", onClick:"$('#upfile').click()", id: :img_prev, width: '300px'%>
+    <%= image_tag "no_image.png", id: :img_prev, width: '300px'%>
   <% end %>
   <div class='profile'>
     <%= u.file_field :image, style:"display:none;", id:"upfile"%>
@@ -35,9 +35,12 @@
   <%= u.submit nil, class: 'btn btn-primary' %>
 <% end %>
 
-<%# 画像のプレビューを表示 %>
+<%# 画像のクリック動作とプレビューを表示 %>
 <script type="text/javascript">
   $(function() {
+    document.getElementById('img_prev').onclick=function(){
+      $('#upfile').click()
+    };
     function readURL(input) {
         if (input.files && input.files[0]) {
         var reader = new FileReader();
