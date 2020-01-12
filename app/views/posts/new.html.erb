@@ -8,9 +8,9 @@
 
 <%= form_with model: @post, local: true, url: confirm_posts_path do |p| %>
   <% if @post.image? %>
-    <%= image_tag @post.image.url, onClick:"$('#upfile').click()",id: :img_prev, width: '300px' %>
+    <%= image_tag @post.image.url,id: :img_prev, width: '300px' %>
   <% else %>
-    <%= image_tag "no_image.png", onClick:"$('#upfile').click()", id: :img_prev, width: '300px' %>
+    <%= image_tag "no_image.png", id: :img_prev, width: '300px' %>
   <% end %>
   <div class='profile'>
     <%= p.file_field :image, style:"display:none;", id:"upfile"%>
@@ -26,6 +26,9 @@
 <%# 画像のプレビューを表示 %>
 <script type="text/javascript">
   $(function() {
+    document.getElementById('img_prev').onclick=function(){
+      $('#upfile').click()
+    };
     function readURL(input) {
         if (input.files && input.files[0]) {
         var reader = new FileReader();
