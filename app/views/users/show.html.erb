@@ -1,5 +1,5 @@
 <% if @user.image.present? %>
-  <%= image_tag @user.image.url , width: '300px' %>
+  <%= image_tag @user.image.url %>
 <% else %>
   <%= image_tag "no_image.png" %>
 <% end %>

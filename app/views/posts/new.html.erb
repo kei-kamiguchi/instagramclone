@@ -8,9 +8,9 @@
 
 <%= form_with model: @post, local: true, url: confirm_posts_path do |p| %>
   <% if @post.image? %>
-    <%= image_tag @post.image.url, width: '300px', onClick:"$('#upfile').click()",id: :img_prev %>
+    <%= image_tag @post.image.url, onClick:"$('#upfile').click()",id: :img_prev, width: '300px' %>
   <% else %>
-    <%= image_tag "no_image.png", onClick:"$('#upfile').click()", id: :img_prev, width: '300px'%>
+    <%= image_tag "no_image.png", onClick:"$('#upfile').click()", id: :img_prev, width: '300px' %>
   <% end %>
   <div class='profile'>
     <%= p.file_field :image, style:"display:none;", id:"upfile"%>

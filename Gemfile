@@ -41,7 +41,6 @@ gem 'jquery-rails'
 # image
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'rmagick'
 
 # password
 gem 'bcrypt'

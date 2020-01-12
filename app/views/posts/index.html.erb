@@ -8,10 +8,10 @@
           <td><%= User.find_by(id: post.user_id).name %></td>
         </tr>
         <tr>
-          <td><%= simple_format(h(post.content), {}, sanitize: false, wrapper_tag: "div") %></td>
+          <td><%= image_tag(post.image.url) if post.image && post.image.url %></td>
         </tr>
         <tr>
-          <td><%= image_tag(post.image.url) if post.image && post.image.url %></td>
+          <td><%= simple_format(h(post.content), {}, sanitize: false, wrapper_tag: "div") %></td>
         </tr>
         <tr>
           <% if post.user_id==current_user.id %>
