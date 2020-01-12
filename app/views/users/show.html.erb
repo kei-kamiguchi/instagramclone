@@ -1,8 +1,8 @@
-  <% if @user.image.present? %>
-    <%= image_tag @user.image.url , width: '300px' %>
-  <% else %>
-    <%= image_tag "no_image.png" %>
-  <% end %>
+<% if @user.image.present? %>
+  <%= image_tag @user.image.url , width: '300px' %>
+<% else %>
+  <%= image_tag "no_image.png" %>
+<% end %>
 <table class='table alt-table-responsive'>
   <tbody>
     <tr>
