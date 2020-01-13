@@ -2,4 +2,3 @@
 <h4>name: <%= User.find_by(id: @post.user_id).name %></h4>
 <h1>投稿内容の確認</h1>
 <%= @post.content %>
-<%= image_tag(@post.image.url) if @post.image && @post.image.url %>
