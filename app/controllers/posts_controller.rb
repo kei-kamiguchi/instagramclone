@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def edit
     @post=Post.find(params[:id])
-    if @post.user_id=current_user&.id
+    if @post.user_id!=current_user&.id
       redirect_to root_path
     end
   end
