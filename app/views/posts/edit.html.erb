@@ -1,4 +1,12 @@
 <h1>編集</h1>
+<% if @post.errors.present? %>
+  <ul id='error_explanation'>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 
 <%= form_with model: @post, local: true do |p| %>
   <div class='form-group'>
@@ -7,6 +15,6 @@
   </div>
   <%= p.label :image %>
   <%= p.file_field :image, class: 'form-control' %>
-  <%= p.hidden_field :image %>
+  <%= p.hidden_field :image_cache %>
   <%= p.submit nil, class: 'btn btn-primary' %>
 <% end %>

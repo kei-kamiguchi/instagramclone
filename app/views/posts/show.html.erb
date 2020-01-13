@@ -5,11 +5,10 @@
       <td><%= Post.human_attribute_name(:content) %></td>
     </tr>
     <tr>
-      <td><%= @post.content %></td>
+      <td><%= simple_format(h(@post.content), {}, sanitize: false, wrapper_tag: "div") %></td>
     </tr>
-
     <tr>
-      <td><%= @post.image %></td>
+      <td><%= image_tag(@post.image.url) if @post.image && @post.image.url %></td>
     </tr>
   </tbody>
 </table>
