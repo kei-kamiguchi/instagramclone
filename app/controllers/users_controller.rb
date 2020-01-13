@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users=User.all
   end
@@ -22,6 +23,9 @@ class UsersController < ApplicationController
 
   def edit
     @user=User.find(params[:id])
+    if @user!=current_user
+      redirect_to root_path
+    end
   end
 
   def update
@@ -50,4 +54,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
+
 end
