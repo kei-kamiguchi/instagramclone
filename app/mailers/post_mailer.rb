@@ -1,6 +1,6 @@
 class PostMailer < ApplicationMailer
-  def post_mail(item)
+  def post_mail(@post)
 
-    mail to: item, subject: "投稿しました"
+    mail to: User.find_by(id: @post.user_id).email , subject: "投稿しました"
   end
 end
