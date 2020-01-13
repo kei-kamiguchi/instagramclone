@@ -48,6 +48,7 @@ gem 'bcrypt'
 # test
 gem 'pry-byebug'
 gem 'faker'
+gem 'rails_12factor', group: :production
 
 # config
 gem 'dotenv-rails'
